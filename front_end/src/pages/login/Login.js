@@ -51,8 +51,8 @@ const Login = () => {
   const { login } = useContext(GlobalContext);
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "test@gmail.com",
+    password: "12345678",
     shouldRemeber: false,
   });
 
