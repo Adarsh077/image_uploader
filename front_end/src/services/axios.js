@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : "http://ec2-3-7-254-31.ap-south-1.compute.amazonaws.com:8000";
+    : "https://image-uploader-aj.herokuapp.com";
 
 axios.defaults.headers["x-access-token"] = localStorage.getItem("token") || "";
 
