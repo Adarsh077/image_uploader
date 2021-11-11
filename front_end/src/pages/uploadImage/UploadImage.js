@@ -199,7 +199,7 @@ const UploadImage = (props) => {
             <img
               src={formData.image}
               className={classes.image}
-              alt="choosen image"
+              alt="select"
             />
           )}
         </Paper>

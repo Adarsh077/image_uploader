@@ -1,6 +1,6 @@
 import initialState from "./InitialState";
 
-export default (state, action) => {
+const AppReducer = (state, action) => {
   switch (action.type) {
     case "AUTHENTICATE_USER":
       if (!action.payload.isAuthenticated) return initialState;
@@ -28,3 +28,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default AppReducer;
