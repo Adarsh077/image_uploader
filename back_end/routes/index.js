@@ -15,6 +15,10 @@ const AppError = require('../utils/appError');
 router.post('/register', validateRegister, authController.register);
 router.get('/login', validateLogin, authController.login);
 
+router.get('/images', imageController.getImages);
+
+router.route('/image').post(imageController.addImage);
+
 // API Authentication Middleware
 router.use((req, _, next) => {
   const token = req.headers['x-access-token'];
@@ -33,11 +37,6 @@ router.use((req, _, next) => {
   });
 });
 
-router.get('/images', imageController.getImages);
-
-router
-  .route('/image')
-  .post(validateAddImage, imageController.addImage)
-  .delete(validateDeleteImage, imageController.deleteImage);
+router.route('/image').delete(validateDeleteImage, imageController.deleteImage);
 
 module.exports = router;
