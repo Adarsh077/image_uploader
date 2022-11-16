@@ -2,11 +2,9 @@ const ImageDoc = require('../models/image.model');
 const catchAsync = require('../utils/catchAsync');
 
 exports.addImage = catchAsync(async (req, res) => {
-  const image = await ImageDoc.create({
-    userId: '6129bed2286e16a56c81a0ef',
-    image: 'QmQvS3qXWrv3MNw2zog5ziH9h1tBggAYp9i5DVkBVVnxHM',
-    imageName: '123',
-  });
+  req.body.userId = req.user._id;
+
+  const image = await ImageDoc.create(req.body);
 
   res.send({
     status: 'success',
@@ -27,9 +25,9 @@ exports.deleteImage = catchAsync(async (req, res) => {
 });
 
 exports.getImages = catchAsync(async (req, res) => {
-  const userId = '6129bed2286e16a56c81a0ef';
+  const userId = req.user._id;
 
-  const images = await ImageDoc.find({ userId });
+  const images = await ImageDoc.find({ userId }).select('imageName image');
 
   res.send({
     status: 'success',
